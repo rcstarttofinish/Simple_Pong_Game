@@ -9,6 +9,7 @@ var Player = function(newX, newAI, newControl) {
 	this.score = 0;
 	this.moveKeys = {};
 	this.height = 50;
+	this.deltay = 0;
 	if(this.ai == false) {
 		if( newControl == 1) {
 			this.moveKeys[0] = 38;
@@ -26,12 +27,13 @@ var Player = function(newX, newAI, newControl) {
 		}
 		else {
 			if (this.moveKeys[0] in keysDown) { // Player holding up
-				this.y -= this.speed; // Move Up
+				this.deltaY = -1 * this.speed; // Move Up
 			}
 			if (this.moveKeys[1] in keysDown) { // Player holding down
-				this.y += this.speed; //Move Down
+				this.deltaY = this.speed; //Move Down
 			}
 		}
+		this.x += deltaY;
 	};
 	
 	this.draw = function() {
